@@ -11,8 +11,38 @@ var connect_rate_limit = require('connect-ratelimit');
 var DocumentHandler = require('./lib/document_handler');
 
 // Load the configuration and set some defaults
-const configPath = process.argv.length <= 2 ? 'config.js' : process.argv[2];
-const config = JSON.parse(fs.readFileSync(PATH.join(__dirname, configPath), 'utf8'));
+const config = {
+  "host": "0.0.0.0",
+  "port": 7777,
+  "keyLength": 10,
+  "maxLength": 400000,
+  "staticMaxAge": 86400,
+  "recompressStaticAssets": false,
+  "logging": [
+    {
+      "level": "verbose",
+      "type": "Console",
+      "colorize": true
+    }
+  ],
+  "keyGenerator": {
+    "type": "phonetic"
+  },
+  "rateLimits": {
+    "categories": {
+      "normal": {
+        "totalRequests": 500,
+        "every": 60000
+      }
+    }
+  },
+  "storage": {
+    "type": "file"
+  },
+  "documents": {
+    "about": "./about.md"
+  }
+}
 config.port = process.env.PORT || config.port || 7777;
 config.host = process.env.HOST || config.host || 'localhost';
 
