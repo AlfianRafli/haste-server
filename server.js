@@ -103,14 +103,14 @@ if (config.recompressStaticAssets) {
 var data;
 for (var name in config.documents) {
   data = '#kntl'
-  winston.info('loading static document', { name: name, path: path });
+  winston.info('loading static document', { name: name });
   if (data) {
     preferredStore.set(name, data, function(cb) {
       winston.debug('loaded static document', { success: cb });
     }, true);
   }
   else {
-    winston.warn('failed to load static document', { name: name, path: path });
+    winston.warn('failed to load static document', { name: name });
   }
 }
 
