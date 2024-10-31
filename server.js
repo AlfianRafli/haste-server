@@ -1,6 +1,6 @@
 var http = require('http');
 var fs = require('fs');
-var PATH = require('path');
+var Path = require('path');
 var uglify = require('uglify-js');
 var winston = require('winston');
 var connect = require('connect');
@@ -103,7 +103,7 @@ if (config.recompressStaticAssets) {
 var path, data;
 for (var name in config.documents) {
   path = config.documents[name];
-  data = fs.readFileSync(path, 'utf8');
+  data = fs.readFileSync(Path.join(__dirname, path), 'utf8');
   winston.info('loading static document', { name: name, path: path });
   if (data) {
     preferredStore.set(name, data, function(cb) {
