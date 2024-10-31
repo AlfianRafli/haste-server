@@ -103,7 +103,7 @@ if (config.recompressStaticAssets) {
 var path, data;
 for (var name in config.documents) {
   path = config.documents[name];
-  data = fs.readFileSync(Path.join(__dirname, path), 'utf8');
+  data = fs.readFileSync(Path.join(process.cwd(), path), 'utf8');
   winston.info('loading static document', { name: name, path: path });
   if (data) {
     preferredStore.set(name, data, function(cb) {
