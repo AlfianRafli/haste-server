@@ -100,10 +100,9 @@ if (config.recompressStaticAssets) {
 }
 
 // Send the static documents into the preferred store, skipping expirations
-var path, data;
+var data;
 for (var name in config.documents) {
-  path = config.documents[name];
-  data = fs.readFileSync(Path.join(process.cwd(), path), 'utf8');
+  data = '#kntl'
   winston.info('loading static document', { name: name, path: path });
   if (data) {
     preferredStore.set(name, data, function(cb) {
