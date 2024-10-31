@@ -12,7 +12,7 @@ var DocumentHandler = require('./lib/document_handler');
 
 // Load the configuration and set some defaults
 const configPath = process.argv.length <= 2 ? 'config.js' : process.argv[2];
-const config = JSON.parse(fs.readFileSync('./var/task/config.js', 'utf8'));
+const config = JSON.parse(fs.readFileSync('config.js', 'utf8'));
 config.port = process.env.PORT || config.port || 7777;
 config.host = process.env.HOST || config.host || 'localhost';
 
